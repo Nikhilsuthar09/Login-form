@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <h1 class="text-danger text-center">Login Form</h1>
+      <br />
+      <div class="col-lg-8 m-auto d-block">
+        <form
+          id="form"
+          action="#"
+          onsubmit="return validation()"
+          class="bg-light"
+        >
+          <div class="form-group">
+            <label> Username: </label>
+            <input
+              type="text"
+              name="user"
+              class="form-control"
+              id="user"
+              autocomplete="off"
+            />
+            <span id="username" class="text-danger font-weight-bold"></span>
+          </div>
+          <div class="form-group">
+            <label>Email: </label>
+            <input
+              type="text"
+              name="email"
+              class="form-control"
+              id="email"
+              autocomplete="off"
+            />
+            <span id="emailid" class="text-danger font-weight-bold"></span>
+          </div>
+          <div class="form-group">
+            <label> Password: </label>
+            <input
+              type="text"
+              name="pass"
+              class="form-control"
+              id="pass"
+              autocomplete="off"
+            />
+            <span id="password" class="text-danger font-weight-bold"></span>
+          </div>
+          <div class="form-group">
+            <label>Confirm Password: </label>
+            <input
+              type="text"
+              name="conpass"
+              class="form-control"
+              id="conpass"
+              autocomplete="off"
+            />
+            <span id="confirmpass" class="text-danger font-weight-bold"></span>
+          </div>
+          <div class="form-group">
+            <label>Phone number: </label>
+            <input
+              type="text"
+              name="mobile"
+              class="form-control"
+              id="mobilenumber"
+              autocomplete="off"
+            />
+            <span id="phoneno" class="text-danger font-weight-bold"></span>
+          </div>
+
+          <input
+            type="submit"
+            name="submit"
+            value="Submit"
+            class="btn btn-danger"
+          />
+        </form>
+      </div>
+    </div>
+    <script>
+      //  validation code
+      function validation() {
+        var user = document.getElementById("user").value;
+        var pass = document.getElementById("pass").value;
+        var confirmpass = document.getElementById("conpass").value;
+        var mobilenumber = document.getElementById("mobilenumber").value;
+        var email = document.getElementById("email").value;
+        var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; // email validation
+
+        if (user == "") {
+          document.getElementById("username").innerHTML =
+            "Please fill the username";
+          return false;
+        }
+        if (user.length <= 5) {
+          document.getElementById("username").innerHTML =
+            "user length should not be less than 5";
+          return false;
+        }
+        if (pass == "") {
+          document.getElementById("password").innerHTML =
+            "Please fill the password";
+          return false;
+        }
+        if (pass == "password") {
+          document.getElementById("password").innerHTML =
+            "Please choose a strong password";
+          return false;
+        }
+        if (pass.length <= 8) {
+          document.getElementById("password").innerHTML =
+            "password length should not be less than 8";
+          return false;
+        }
+
+        if (confirmpass == "") {
+          document.getElementById("confirmpass").innerHTML =
+            "Please fill this field";
+          return false;
+        }
+        if (pass != confirmpass) {
+          document.getElementById("confirmpass").innerHTML =
+            "Your password does not match";
+          return false;
+        }
+        if (mobilenumber == "") {
+          document.getElementById("phoneno").innerHTML =
+            "Please fill the mobile number";
+          return false;
+        }
+        if (mobilenumber == "1234567890") {
+          document.getElementById("phoneno").innerHTML =
+            "invalid mobile number";
+          return false;
+        }
+        if (mobilenumber.length != 10) {
+          document.getElementById("phoneno").innerHTML =
+            "Please enter your 10 digit mobile number";
+          return false;
+        }
+
+        if (email == "") {
+          document.getElementById("emailid").innerHTML =
+            "Please fill the email id";
+          return false;
+        }
+        if (email.match(pattern)) {
+          alert("login successful");
+        } else {
+          alert("invalid email");
+        }
+      }
+    </script>
+  </body>
+</html>
